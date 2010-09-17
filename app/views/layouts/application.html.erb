@@ -8,8 +8,24 @@
 </head>
 <body>
 <ul>
+  <header>
+  <% if user_signed_in? %>
+  <h2>Welcome <%= current_user.email %></h2>
+  <nav>
+<ul>
+  <%= link_to "Sign out", user_session_path, :method => :delete %>
   <%= link_to "New Post", new_article_path %>
 </ul>
+  </nav>
+<% else %>
+  <nav>
+<ul>
+  <%= link_to "Sign up", new_user_registration_path %>
+  <%= link_to "Sign in", new_user_session_path %>
+</ul>
+  </nav>
+<% end %>
+  </header>
 
 <% [:notice, :error].each do |flashtype| %>
   <div class='<%=flashtype %>'>

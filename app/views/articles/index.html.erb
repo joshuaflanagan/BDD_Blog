@@ -1,8 +1,9 @@
 <h1>My Blog</h1>
 <div id='articles'>
-  <% @articles.each do |a| %>
+  <% @articles.each do |article| %>
     <article>
-      <h2 class='rounded'><%= link_to a.title, a %></h2>
+      <h2 class='rounded'><%= link_to article.title, article %></h2>
+      <h3 class='author'><%= article.user.email %></h3>
     </article>
   <%end%>
 </div>

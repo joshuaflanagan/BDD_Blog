@@ -3,19 +3,13 @@ Feature: Hello World
   As a web browser
   I want my test to check for Hello World
 
-  Scenario: Viewing the page
+  Background:
     Given the following article exists:
     | title      | body    |
     | Some title | sombody |
-    
-#    Given the following user exists:
-#    | email | password |
-#    | test@test.com | password|
-#    And I am on the homepage
-#    
-#    Given I am logged in as "tim@tim.com"
-    
-    
+    And the article "Some title" was written by "user@example.com"
+
+  Scenario: Viewing the page
     Given I am on the homepage
     Then I should see "Some title"
     And I should not see "somebody"
@@ -23,3 +17,7 @@ Feature: Hello World
     
     When I follow "Some title"
     Then I should see "sombody"
+
+  Scenario: Articles with authors
+    When I go to the home page
+    Then I should see "user@example.com" within "article .author"

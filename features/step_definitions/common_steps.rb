@@ -10,10 +10,10 @@ Then "I debug" do
   debugger
 end
 
-#Given /^I am logged in as "([^\"]*)"$/ do |email|
-#    Given %|I am on the homepage|
-#    When %| I follow "Lgo in"|
-#    When %| I fill in "Email" with #{email}
-#    When %| I fill in "Password" with "#{email}"password
-#    When %|I press "Log in"|
-#end
+Given /^I log in as "([^"]*)"$/ do |email|
+    Given %|I am on the homepage|
+    When %|I follow "Sign in"|
+    When %|I fill in "Email" with "#{email}"|
+    When %|I fill in "Password" with "password"|
+    When %|I press "Sign in"|
+end

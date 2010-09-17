@@ -4,7 +4,11 @@ Feature: Posting a new article
     I want to post new articles
     
     Scenario: Posting an article
+     Given the following confirmed user exists:
+      | Email |
+      | user@example.com |
      Given I am on the home page
+     When I log in as "user@example.com"
      When I follow "New Post"
      Then I should be on the new article page
       And I should see "New Article"
@@ -19,4 +23,9 @@ Feature: Posting a new article
         And I should see awesome rounded corners
         And I should see a list of articles
         #And I debug
+
+  Scenario: Maliciously posting an article
+    When I go to the new article page
+    Then I should see "Sign in"
+    And I should be on the new user session page
     
