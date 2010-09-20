@@ -15,6 +15,7 @@ class ArticlesController < ApplicationController
   
   def create
     @article = Article.new params[:article]
+    @article.user = current_user
     if @article.valid?
       @article.save
       redirect_to root_url, :notice => "New article created"
@@ -28,7 +29,8 @@ class ArticlesController < ApplicationController
   end
   
   def update
-    @article = Article.new params[:article]
+    @article = Article.find params[:id]
+    @article.update_attributes params[:article]
     if @article.valid?
       @article.save
       redirect_to root_url, :notice => "Article updated."

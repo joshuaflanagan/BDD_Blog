@@ -5,9 +5,11 @@ Feature: Editing an existing article
   
   Scenario: Editing existing article
     Given the following article exists:
-        | Title           |   
-        | Existing article|
+        | title           | body |
+        | Existing article| The is really interesting |
+        And the article "Existing article" was written by "user@example.com"
         And I am on the home page
+        And I log in as "user@example.com"
         And I follow "Existing article"
         And I follow "Edit"
         And I fill in "Title" with "Better title"
